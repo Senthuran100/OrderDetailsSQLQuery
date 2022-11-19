@@ -57,6 +57,13 @@ insert into orders_item (`order_id`,`item_id`,`quantity`,`price`) values (1,2,2,
 insert into orders_item (`order_id`,`item_id`,`quantity`,`price`) values (2,3,2,2)
 insert into orders_item (`order_id`,`item_id`,`quantity`,`price`) values (3,3,4,2)
 
+--Finding the total price of the order by customer name and the order id.
+select SUM(p.Price*oi.quantity) as total from customers c 
+LEFT JOIN orders o on c.ID =o.customer_id 
+LEFT JOIN orders_item oi on o.ID = oi.order_id 
+LEFT JOIN products p on p.ID = oi.item_id 
+where c.Name = 'John Doe' and o.ID = 1
+
 
 
 
