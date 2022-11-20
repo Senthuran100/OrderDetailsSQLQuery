@@ -64,11 +64,7 @@ LEFT JOIN orders_item oi on o.ID = oi.order_id
 LEFT JOIN products p on p.ID = oi.item_id 
 where c.Name = 'John Doe' and o.ID = 1
 
-
-
-
-
-
-
-
-	
+-- Group the customer and the order.
+SELECT c.ID, c.Name, o.ID  from customers c 
+JOIN orders o on o.customer_id = c.ID 
+GROUP BY c.ID,o.ID
