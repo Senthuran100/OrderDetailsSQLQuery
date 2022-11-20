@@ -45,3 +45,14 @@ INSERT INTO category(title,parent_id)
 VALUES('Headsets',7);
 INSERT INTO category(title,parent_id) 
 VALUES('Screen Protectors',7);
+
+-- Finding the root node.
+SELECT * FROM category c where c.parent_id is NULL
+
+-- Find the immediate leaf node
+SELECT * from category c where parent_id = (SELECT id FROM category c where c.parent_id is NULL);
+
+--Find the leaf node.
+SELECT c.id, c.title  from category c 
+LEFT JOIN category c2 on c.id = c2.parent_id 
+where c2.id is NULL 
