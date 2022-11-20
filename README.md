@@ -13,5 +13,5 @@ Mysql queries to map the customer, product and order details in database.
 
 
 <p align="center">
-  <img src="https://github.com/Senthuran100/OrderDetailsSQLQuery/blob/main/HierarchicalData.png.png" width="450" title="Entity Diagram for Order Details">
+  <img src="https://github.com/Senthuran100/SQLQuery/blob/main/HierarchicalData.png" width="450" title="Hierarchical Data">
 </p>
