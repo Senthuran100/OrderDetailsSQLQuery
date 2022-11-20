@@ -56,3 +56,29 @@ SELECT * from category c where parent_id = (SELECT id FROM category c where c.pa
 SELECT c.id, c.title  from category c 
 LEFT JOIN category c2 on c.id = c2.parent_id 
 where c2.id is NULL 
+
+-- Finding the whole tree
+WITH RECURSIVE category_path(id,title, path) AS 
+(
+SELECT id, title, title as path
+from category c 
+where c.parent_id is NULL 
+UNION ALL 
+SELECT c2.id , c2.title , CONCAT(cp.path,'>',c2.title)  FROM category_path cp JOIN category c2 
+ON cp.id = c2.parent_id 
+)
+SELECT * from category_path
+ORDER BY path
+
+-- Calculating the level of the subtree
+WITH RECURSIVE category_path(id,title, level) AS 
+(
+SELECT id, title, 0 level
+from category c 
+where c.parent_id is NULL 
+UNION ALL 
+SELECT c2.id , c2.title , cp.level+1  FROM category_path cp JOIN category c2 
+ON cp.id = c2.parent_id 
+)
+SELECT * from category_path
+ORDER BY level
