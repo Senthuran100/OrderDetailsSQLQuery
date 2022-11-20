@@ -11,6 +11,8 @@ Mysql queries to map the customer, product and order details in database.
 
 [hierarchical-query.sql](https://github.com/Senthuran100/SQLQuery/blob/main/hierarchical-query.sql)
 
+
+
 id|title               |path                            |
 --+--------------------+--------------------------------+
  1|Electronics         |Electronics                     |
